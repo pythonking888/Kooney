@@ -106,4 +106,31 @@ bullet_text = st.text_area(
 if bullet_text:
     st.markdown("### Your Notes:")
     st.markdown(bullet_text)
+import streamlit as st
+
+# Set up tabs
+tabs = st.tabs(["Dashboard", "Analytics", "Settings", "About"])
+
+# Dashboard tab content
+with tabs[0]:
+    st.title("📝 Dashboard Notes")
+    bullet_text = st.text_area(
+        label="Write your bullet points here:",
+        height=300,
+        placeholder="- First insight\n- Second update\n- Third action item"
+    )
+
+    if bullet_text:
+        st.markdown("### Your Notes:")
+        st.markdown(bullet_text)
+
+# Other tabs left intentionally blank
+with tabs[1]:
+    pass  # Analytics
+
+with tabs[2]:
+    pass  # Settings
+
+with tabs[3]:
+    pass  # About
 
