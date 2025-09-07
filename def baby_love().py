@@ -1,27 +1,17 @@
 import streamlit as st
+from streamlit.components.v1 import html
 
-st.set_page_config(page_title="Hello World", layout="centered")
-
-st.title("👋 Hello, Kamen, !")
-
-st.write("you are my best friend!")
-import streamlit as st
-
-# Set page config for dark mode
+# Set page config
 st.set_page_config(page_title="Leo vs Daddy", layout="centered")
 
-# Inject custom CSS for black background and white text
+# Inject CSS for full black background and white text
 st.markdown("""
     <style>
-        body {
-            background-color: black;
-            color: white;
+        html, body, .stApp {
+            background-color: black !important;
+            color: white !important;
         }
-        .stApp {
-            background-color: black;
-            color: white;
-        }
-        h1, h2, h3, h4, h5, h6, p, label {
+        h1, h2, h3, h4, h5, h6, p, label, .css-1v3fvcr {
             color: white !important;
         }
     </style>
@@ -35,4 +25,13 @@ choice = st.radio("Choose one:", ["Leo", "Daddy"])
 if choice == "Leo":
     st.image("https://raisingchildren.net.au/newborns/behaviour/understanding-behaviour/newborn-behaviour", caption="Leo 👶")
 elif choice == "Daddy":
-    st.image("https://heroes-and-villain.fandom.com/wiki/Hulk_(Marvel_Cinematic_Universe)", caption="Daddy 💪 (Hulk)")
+    st.image("https://upload.wikimedia.org/wikipedia/en/5/59/Hulk_%28comics_character%29.png", caption="Daddy 💪 (Hulk)")
+
+# Inject fire animation at the bottom using HTML
+html("""
+    <div style="position: fixed; bottom: 0; left: 0; width: 100%; height: 200px; z-index: -1; overflow: hidden;">
+        <video autoplay muted loop style="width: 100%; height: 100%; object-fit: cover;">
+            <source src="https://cdn.pixabay.com/vimeo/769189097/fire-animated-background.mp4?width=1280&hash=4a1e3d4b3f" type="video/mp4">
+        </video>
+    </div>
+""", height=200)
