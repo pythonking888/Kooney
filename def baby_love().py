@@ -97,3 +97,17 @@ with colB:
     st.header("Column B")
     st.write("This is content inside Column B.")
 
+import streamlit as st
+
+st.title("📝 Dashboard Notes")
+
+bullet_text = st.text_area(
+    label="Write your bullet points here:",
+    height=300,
+    placeholder="- First insight\n- Second update\n- Third action item"
+)
+
+# Optional: Display the entered text below
+if bullet_text:
+    st.markdown("### Your Notes:")
+    st.markdown(bullet_text)
