@@ -49,19 +49,47 @@ st.set_page_config(page_title="Macro Buttons", layout="wide")
 if "active_tab" not in st.session_state:
     st.session_state.active_tab = "Home"
 
-# Sidebar-style macro buttons on the right
-with st.sidebar:
-    st.markdown("<h3 style='text-align: center;'>🔧 Macros</h3>", unsafe_allow_html=True)
-    if st.button("📊 Dashboard"):
-        st.session_state.active_tab = "Dashboard"
-    if st.button("📈 Analytics"):
-        st.session_state.active_tab = "Analytics"
-    if st.button("🧮 Calculator"):
-        st.session_state.active_tab = "Calculator"
-    if st.button("📁 Data View"):
-        st.session_state.active_tab = "Data View"
-    if st.button("⚙️ Settings"):
-        st.session_state.active_tab = "Settings"
+# Inject CSS for bottom-centered blue button panel
+st.markdown("""
+    <style>
+        .bottom-panel {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 9999;
+        }
+        .macro-button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            transition: background-color 0.3s ease;
+        }
+        .macro-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <div class="bottom-panel">
+        <form action="?tab=Dashboard"><button class="macro-button">📊 Dashboard</button></form>
+        <form action="?tab=Analytics"><button class="macro-button">📈 Analytics</button></form>
+        <form action="?tab=Calculator"><button class="macro-button">🧮 Calculator</button></form>
+        <form action="?tab=Data"><button class="macro-button">📁 Data View</button></form>
+        <form action="?tab=Settings"><button class="macro-button">⚙️ Settings</button></form>
+    </div>
+""", unsafe_allow_html=True)
+
+# Read tab from query params
+query_params = st.experimental_get_query_params()
+if "tab" in query_params:
+    st.session_state.active_tab = query_params["tab"][0]
 
 # Main content area
 st.markdown(f"<h2 style='color:#007BFF;'>Current Tab: {st.session_state.active_tab}</h2>", unsafe_allow_html=True)
@@ -72,7 +100,9 @@ elif st.session_state.active_tab == "Analytics":
     st.write("Here are your analytics.")
 elif st.session_state.active_tab == "Calculator":
     st.write("Use the calculator here.")
-elif st.session_state.active_tab == "Data View":
+elif st.session_state.active_tab == "Data":
     st.write("Browse your data.")
 elif st.session_state.active_tab == "Settings":
     st.write("Adjust your settings.")
+else:
+    st.write("Choose a tab from the bottom panel.")
