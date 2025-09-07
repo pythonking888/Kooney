@@ -90,12 +90,7 @@ else:
 
 # Columns with matching background
 colA, colB = st.columns(2)
-with colA:
-    st.header("Column A")
-    st.write("This is content inside Column A.")
-with colB:
-    st.header("Column B")
-    st.write("This is content inside Column B.")
+
 
 import streamlit as st
 
@@ -111,3 +106,4 @@ bullet_text = st.text_area(
 if bullet_text:
     st.markdown("### Your Notes:")
     st.markdown(bullet_text)
+
