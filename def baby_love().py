@@ -5,9 +5,9 @@ st.set_page_config(page_title="Dark Grey Mode", layout="wide")
 
 # Initialize tab control
 if "active_tab" not in st.session_state:
-    st.session_state.active_tab = "Home"
+    st.session_state.active_tab = "Dashboard"
 
-# Inject CSS for full dark grey background and blue text
+# Inject CSS for dark grey theme and blue text
 st.markdown("""
     <style>
         html, body, .stApp {
@@ -17,13 +17,7 @@ st.markdown("""
         .block-container {
             background-color: #2e2e2e !important;
         }
-        [data-testid="stVerticalBlock"] {
-            background-color: #2e2e2e !important;
-        }
         h1, h2, h3, h4, h5, h6, p, label, .stMarkdown {
-            color: #007BFF !important;
-        }
-        .stRadio > div {
             color: #007BFF !important;
         }
         .bottom-panel {
@@ -55,7 +49,7 @@ st.markdown("""
 
 # Bottom-centered macro buttons
 with st.container():
-    col1, col2, col3, col4, col5 = st.columns([1,1,1,1,1])
+    col1, col2, col3, col4, col5 = st.columns(5)
     with col1:
         if st.button("📊 Dashboard"):
             st.session_state.active_tab = "Dashboard"
@@ -66,71 +60,27 @@ with st.container():
         if st.button("🧮 Calculator"):
             st.session_state.active_tab = "Calculator"
     with col4:
-        if st.button("💹  Secruities "):
-            st.session_state.active_tab = "Secruities"
+        if st.button("💹 Securities"):
+            st.session_state.active_tab = "Securities"
     with col5:
         if st.button("📰 News"):
             st.session_state.active_tab = "News"
 
-# Main content
+# Display current tab
 st.markdown(f"<h2 style='color:#007BFF;'>Current Tab: {st.session_state.active_tab}</h2>", unsafe_allow_html=True)
 
+# Dashboard content
 if st.session_state.active_tab == "Dashboard":
-    st.write("🧭 Welcome to the Dashboard.")
-elif st.session_state.active_tab == "Analytics":
-    st.write("📈 Analytics tools go here.")
-elif st.session_state.active_tab == "Calculator":
-    st.write("🧮 Use the calculator here.")
-elif st.session_state.active_tab == "Data":
-    st.write("📁 View your data.")
-elif st.session_state.active_tab == "Settings":
-    st.write("⚙️ Adjust your settings.")
-else:
-    st.write("Choose a tab from the bottom panel.")
-
-# Columns with matching background
-colA, colB = st.columns(2)
-
-
-import streamlit as st
-
-st.title("📝 Dashboard Notes")
-
-bullet_text = st.text_area(
-    label="Write your bullet points here:",
-    height=300,
-    placeholder="- First insight\n- Second update\n- Third action item"
-)
-
-# Optional: Display the entered text below
-if bullet_text:
-    st.markdown("### Your Notes:")
-    st.markdown(bullet_text)
-import streamlit as st
-
-# Set up tabs
-tabs = st.tabs(["Dashboard", "Analytics", "Settings", "About"])
-
-# Dashboard tab content
-with tabs[0]:
     st.title("📝 Dashboard Notes")
     bullet_text = st.text_area(
         label="Write your bullet points here:",
         height=300,
         placeholder="- First insight\n- Second update\n- Third action item"
     )
-
     if bullet_text:
         st.markdown("### Your Notes:")
         st.markdown(bullet_text)
 
-# Other tabs left intentionally blank
-with tabs[1]:
-    pass  # Analytics
-
-with tabs[2]:
-    pass  # Settings
-
-with tabs[3]:
-    pass  # About
-
+# All other tabs intentionally left blank
+elif st.session_state.active_tab in ["Buy / Sell Indicators", "Calculator", "Securities", "News"]:
+    st.markdown("")
