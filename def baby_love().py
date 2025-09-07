@@ -12,7 +12,7 @@ st.markdown("""
             color: white !important;
         }
         h1, h2, h3, h4, h5, h6, p, label, .css-1v3fvcr {
-            color: white !important;
+            color: blue !important;
         }
     </style>
 """, unsafe_allow_html=True)
@@ -35,3 +35,4 @@ html("""
         </video>
     </div>
 """, height=200)
+
