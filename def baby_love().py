@@ -38,6 +38,8 @@ with col1:
 with col2:
     st.header("Column B")
     st.write("Content inside Column B")
+
+
 import streamlit as st
 
 # Page config
@@ -74,4 +76,3 @@ elif st.session_state.active_tab == "Data View":
     st.write("Browse your data.")
 elif st.session_state.active_tab == "Settings":
     st.write("Adjust your settings.")
-
