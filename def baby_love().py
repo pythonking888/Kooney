@@ -60,17 +60,17 @@ with st.container():
         if st.button("📊 Dashboard"):
             st.session_state.active_tab = "Dashboard"
     with col2:
-        if st.button("📈 Analytics"):
-            st.session_state.active_tab = "Analytics"
+        if st.button("📈 Buy / Sell Indicators"):
+            st.session_state.active_tab = "Buy / Sell Indicators"
     with col3:
         if st.button("🧮 Calculator"):
             st.session_state.active_tab = "Calculator"
     with col4:
-        if st.button("📁 Data View"):
-            st.session_state.active_tab = "Data"
+        if st.button("💹  Secruities "):
+            st.session_state.active_tab = "Secruities"
     with col5:
-        if st.button("⚙️ Settings"):
-            st.session_state.active_tab = "Settings"
+        if st.button("📰 News"):
+            st.session_state.active_tab = "News"
 
 # Main content
 st.markdown(f"<h2 style='color:#007BFF;'>Current Tab: {st.session_state.active_tab}</h2>", unsafe_allow_html=True)
@@ -96,3 +96,4 @@ with colA:
 with colB:
     st.header("Column B")
     st.write("This is content inside Column B.")
+
