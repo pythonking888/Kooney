@@ -1,37 +1,40 @@
 import streamlit as st
-from streamlit.components.v1 import html
 
-# Set page config
-st.set_page_config(page_title="Leo vs Daddy", layout="centered")
+# Page config
+st.set_page_config(page_title="Dark Grey Mode", layout="wide")
 
-# Inject CSS for full black background and white text
+# Inject CSS for full dark grey background and light text
 st.markdown("""
     <style>
         html, body, .stApp {
-            background-color: black !important;
-            color: white !important;
+            background-color: #2e2e2e !important;  /* Dark grey */
+            color: #f0f0f0 !important;             /* Light text */
         }
-        h1, h2, h3, h4, h5, h6, p, label, .css-1v3fvcr {
-            color: white !important;
+        [data-testid="stVerticalBlock"] {
+            background-color: #2e2e2e !important;
+        }
+        .block-container {
+            background-color: #2e2e2e !important;
+        }
+        h1, h2, h3, h4, h5, h6, p, label {
+            color: #f0f0f0 !important;
+        }
+        .stRadio > div {
+            color: #f0f0f0 !important;
         }
     </style>
 """, unsafe_allow_html=True)
 
-# Title and question
-st.title("Who Do You Love More? ❤️")
-choice = st.radio("Choose one:", ["Leo", "Daddy"])
+# Minimal content
+st.title("🖤 Dark Grey Mode Activated")
+st.write("This is your clean, distraction-free layout with a dark grey background.")
 
-# Display image based on choice
-if choice == "Leo":
-    st.image("https://raisingchildren.net.au/newborns/behaviour/understanding-behaviour/newborn-behaviour", caption="Leo 👶")
-elif choice == "Daddy":
-    st.image("https://upload.wikimedia.org/wikipedia/en/5/59/Hulk_%28comics_character%29.png", caption="Daddy 💪 (Hulk)")
+col1, col2 = st.columns(2)
 
-# Inject fire animation at the bottom using HTML
-html("""
-    <div style="position: fixed; bottom: 0; left: 0; width: 100%; height: 200px; z-index: -1; overflow: hidden;">
-        <video autoplay muted loop style="width: 100%; height: 100%; object-fit: cover;">
-            <source src="https://cdn.pixabay.com/vimeo/769189097/fire-animated-background.mp4?width=1280&hash=4a1e3d4b3f" type="video/mp4">
-        </video>
-    </div>
-""", height=200)
+with col1:
+    st.header("Column A")
+    st.write("Content inside Column A")
+
+with col2:
+    st.header("Column B")
+    st.write("Content inside Column B")
