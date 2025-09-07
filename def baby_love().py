@@ -38,3 +38,40 @@ with col1:
 with col2:
     st.header("Column B")
     st.write("Content inside Column B")
+import streamlit as st
+
+# Page config
+st.set_page_config(page_title="Macro Buttons", layout="wide")
+
+# Initialize session state for tab control
+if "active_tab" not in st.session_state:
+    st.session_state.active_tab = "Home"
+
+# Sidebar-style macro buttons on the right
+with st.sidebar:
+    st.markdown("<h3 style='text-align: center;'>🔧 Macros</h3>", unsafe_allow_html=True)
+    if st.button("📊 Dashboard"):
+        st.session_state.active_tab = "Dashboard"
+    if st.button("📈 Analytics"):
+        st.session_state.active_tab = "Analytics"
+    if st.button("🧮 Calculator"):
+        st.session_state.active_tab = "Calculator"
+    if st.button("📁 Data View"):
+        st.session_state.active_tab = "Data View"
+    if st.button("⚙️ Settings"):
+        st.session_state.active_tab = "Settings"
+
+# Main content area
+st.markdown(f"<h2 style='color:#007BFF;'>Current Tab: {st.session_state.active_tab}</h2>", unsafe_allow_html=True)
+
+if st.session_state.active_tab == "Dashboard":
+    st.write("Welcome to the Dashboard tab.")
+elif st.session_state.active_tab == "Analytics":
+    st.write("Here are your analytics.")
+elif st.session_state.active_tab == "Calculator":
+    st.write("Use the calculator here.")
+elif st.session_state.active_tab == "Data View":
+    st.write("Browse your data.")
+elif st.session_state.active_tab == "Settings":
+    st.write("Adjust your settings.")
+
