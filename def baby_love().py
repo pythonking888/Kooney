@@ -26,8 +26,8 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Minimal content
-st.title("🖤 Dark Grey Mode Activated")
-st.write("This is your clean, distraction-free layout with a dark grey background.")
+st.title("The Financial News")
+st.write("Regulatory Newsfeed")
 
 col1, col2 = st.columns(2)
 
@@ -82,14 +82,11 @@ st.markdown("""
         <form action="?tab=Analytics"><button class="macro-button">📈 Analytics</button></form>
         <form action="?tab=Calculator"><button class="macro-button">🧮 Calculator</button></form>
         <form action="?tab=Data"><button class="macro-button">📁 Data View</button></form>
-        <form action="?tab=Settings"><button class="macro-button">⚙️ Settings</button></form>
+      
     </div>
 """, unsafe_allow_html=True)
 
-# Read tab from query params
-query_params = st.experimental_get_query_params()
-if "tab" in query_params:
-    st.session_state.active_tab = query_params["tab"][0]
+
 
 # Main content area
 st.markdown(f"<h2 style='color:#007BFF;'>Current Tab: {st.session_state.active_tab}</h2>", unsafe_allow_html=True)
@@ -106,3 +103,4 @@ elif st.session_state.active_tab == "Settings":
     st.write("Adjust your settings.")
 else:
     st.write("Choose a tab from the bottom panel.")
+
